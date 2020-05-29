@@ -48,7 +48,7 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 
 ## 2. Descripción del proyecto
 
-*[Incluya aquí la descripción del proyecto.]*
+*Se plantea un sistema basado en flujos constantes con base en redes de Jackson y Distribución de Poisson para manejar la asignación de personas dentro de un sistema de aeropuertos a bandas de transporte que les permita moverse entre terminales o salir del sistema cuando lo requieran. El sistema se compone de un número N de terminales, cada una con un número B de bandas, las cuales pueden tener direcciones Tn -> Tm o Tn <- Tm. Estas bandas deben estar apagadas hasta que se les requiera. Deben tener el mayor nivel de concurrencia posible y poder ser volteadas en caso de que el flujo de una terminal lo requiera y siempre y cuando no tenga personas siendo transportadas entre terminales.*
 
 ## 3. Solución
 
