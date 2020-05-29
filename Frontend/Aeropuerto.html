@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Cintas Transportadoras</title>
+    <link rel="stylesheet" type="text/css" href="apoyo.css">
+</head>
+<body>
+    <div class="cabecera">
+        <img src="newlogo.jpg"/>
+    </div>
+
+    <div class="cuerpo">
+        <div class="contenido">
+            <h1>Aeropuerto Internacional de la Ciudad de México</h1>
+            <h2>1. Cintas Transportadoras</h2>
+            <p>Para especifiaciones del problema descargar el siguiente archivo: <a href="PF3. Cintas transportadoras.pdf" download="Cintas Transportadoras" target="_blank">
+                Cintas Transportadoras</a> </p>
+
+            <p>Este programa le inidca a al gete que cintas utilzar para llegar a las terminales que les correspondan
+                , evitando asi, los cuellos de botella y los retardos.
+            </p>
+            <p>El programa funciona con base en las redes de Jackson y la distribución de Poisson</p>
+            <h2>2. Problema</h2>
+            <p>Para el nuevo aeropuerto de la Ciudad de México, se quiere diseñar un sistema de cintas transportadoras de
+                personas, que ayuden a desahogar el tráfico que se espera generar debido al volumen de vuelos. Para lo
+                anterior, el aeropuerto está dividido en N secciones, donde cada sección contiene un conjunto C de cintas
+                transportadoras para que las personas se desplacen de una manera más ágil. Cada sección puede tener un
+                número diferente de cintas. Las cintas pueden desplazarse en ambos sentidos, según sea necesario, o
+                pueden estar detenidas para ahorrar energía, en caso de que no existan usuarios en espera. <br> <br>
+                Cuando los usuarios llegan a un sección, se van formando en una fila y, en una pantalla, el sistema le va
+                indicando cuál cinta debe utilizar buscando siempre obtener la mayor concurrencia de personas posibles. Si
+                una cinta deja de utilizarse por un minuto, esta se detiene automáticamente. Cuando una cinta se está
+                desplazando en un sentido y llega un usuario que necesite desplazarse en sentido inverso, puede asignársele
+                dicha cinta, sí y solo sí, no está transportando a ninguna persona. Siempre que una cinta se esté moviendo en
+                un sentido, tendrán prioridad de utilizarla las personas que lleguen en el mismo sentido, pero hay que
+                garantizar que los usuarios que esperan en sentido inverso no tengan que esperar indefinidamente (problema
+                de inanición).<br> <br>
+                Dada las condiciones anteriores, en una misma sección pueden estar desplazándose en un sentido n cintas y
+                en el sentido opuesto otras m cintas, además de estar detenidas p cintas. </p>
+            <h2>3. Prueba</h2>
+            <p>A continuación se muestra un ejemplo del diagrama de Terminales y Cintas </p>
+            <p> <img id="to_show" src="" width="300px" heigth="300px" alt=""> </p>
+
+            
+        </div>
+        <div class="barra-lateral">
+            <img src = "logoaeropuerto.png"> <br> <br> <br> <br> <br> <br> <br> <br>
+            <div>
+                <h3>Asignaciones de banda</h3>
+                <ul>
+                    <li>Hacia Terminal 2 partiendo de Terminal 3</li>
+                    <li>Hacia Terminal 3 partiendo de Terminal 2</li>
+                    <li>Hacia Terminal 4 partiendo de Terminal 2</li>
+                    <li>Hacia Terminal 1 partiendo de Terminal 4</li>
+                    <li>Hacia Terminal 2 partiendo de Terminal SALIDA</li>
+                    <li>Hacia Terminal 3 partiendo de Terminal SALIDA</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="pie">
+        <p>Copyright © 2020 Diseño y Desarrollo de Algoritmos </p>
+        <p>Desarrolladores:</p>
+        <p>Luis Emilio Alcántara A01027304 <a target="_blank" href="https://www.twitch.tv/cloakzy">contacto</a></p>
+        <p>Esteban Manrique de Lara A01027077 <a target="_blank" href="https://www.linkedin.com/in/esteban-manrique-de-lara-sirvent-05931a191/">contacto</a></p>
+        <p>Miguel Ángel Hernández A01022398 <a target="_blank" href="https://www.facebook.com/miguel.jordan.562">contacto</a></p>
+    </div>
+    <script>
+        const url="demo_dot.png"
+        const img = document.getElementById("to_show")
+        document.getElementById("to_show").height = "666";
+        document.getElementById("to_show").width = "1100";
+        setInterval(()=>{
+            img.src = url + "?" + new Date().getTime()
+        },300)
+
+    </script>
+    
+</body>
+</html>
