@@ -40,26 +40,35 @@
                 en el sentido opuesto otras m cintas, además de estar detenidas p cintas. </p>
             <h2>3. Prueba</h2>
             <p>A continuación se muestra un ejemplo del diagrama de Terminales y Cintas </p>
+            <form name="Datos" action ="aeropuerto.php" method="get">
+                <label>Número De Terminales</label>
+                <br>
+                <input type="text" name="Terminales" required>
+                <br />
+                <label>Número de Bandas Máximas</label>
+                <br>
+                <input type="text" name="bandas" required>
+                <br />
+                <label>Capacidad de Bandas</label>
+                <br>
+                <input type="text" name="capacidad" required>
+                <br />
+                <button type="submit">Ejecutar</button>
+            </form>
             <p> <img id="to_show" src="" width="300px" heigth="300px" alt=""> </p>
 
             
         </div>
-        <div class="barra-lateral">
-            <img src = "logoaeropuerto.png"> <br> <br> <br> <br> <br> <br> <br> <br>
+        <div class="izquierda">
+            <img src = "logoaeropuerto.png"> 
             <div>
                 <h3>Asignaciones de banda</h3>
-                <ul>
-                    <li>Hacia Terminal 2 partiendo de Terminal 3</li>
-                    <li>Hacia Terminal 3 partiendo de Terminal 2</li>
-                    <li>Hacia Terminal 4 partiendo de Terminal 2</li>
-                    <li>Hacia Terminal 1 partiendo de Terminal 4</li>
-                    <li>Hacia Terminal 2 partiendo de Terminal SALIDA</li>
-                    <li>Hacia Terminal 3 partiendo de Terminal SALIDA</li>
-                </ul>
+                <p><iframe src="Asignaciones.txt" frameborder="0" height="600" id="run"
+                    width="155%"></iframe>
             </div>
         </div>
     </div>
-    <div class="pie">
+    <div class="creditos">
         <p>Copyright © 2020 Diseño y Desarrollo de Algoritmos </p>
         <p>Desarrolladores:</p>
         <p>Luis Emilio Alcántara A01027304 <a target="_blank" href="https://www.twitch.tv/cloakzy">contacto</a></p>
@@ -75,6 +84,15 @@
             img.src = url + "?" + new Date().getTime()
         },300)
 
+    </script>
+    <script>
+        const url2 = "Asignaciones.txt"
+        const iframe = document.getElementById("run")
+        document.getElementById("run").height = "600";
+        document.getElementById("run").width = "155%";
+        setInterval(()=>{
+            iframe.src = url2 + "?" + new Date().getTime()
+        },1000)
     </script>
     
 </body>
