@@ -6,8 +6,9 @@ lista = [ ]
 cont=0
 contelem=0
 contex=-1
+lin0 = 1
 for i in lines:
-    if contelem==0 and cont>4:
+    if contelem==0 and cont>lin0:
         contex=contex+1
     if cont==0:
         lin0=float(i)
@@ -48,7 +49,7 @@ a = np.array(listaA)
 b= np.array(listaB)
 X2 = np.linalg.solve(a, b)   
            
-f=open('lambdas.txt','w')
+f=open('Lamdas.txt','w')
 for j in X2:
     y=round(j, 2)
     if y<0:
@@ -59,13 +60,4 @@ for j in X2:
     x=str(y)
     f.write(x+ '\n')
 f.close()            
-            
- 
-            
-            
-            
-            
-            
-            
-            
-    
+           
