@@ -26,6 +26,7 @@
 #include <chrono>  
 #include <iostream>
 #include <unistd.h>
+#include <string>
 #include <fstream>
 
 using namespace std;
@@ -87,7 +88,8 @@ struct Terminal
 vector<Terminal> listaTerminales; //Vector Global que contiene a todas las terminales del sistema
 vector<int> alphas; //Vector global que contiene el flujo promedio que entra a cada terminal
 ofstream probabilidades; //Archivo de escritura en donde se escribe las probabilidades de asignar a una persona a una banda desde cualquier terminal.
-int servicio = 30; //Variable global que indica la capacidad máxima de las bandas del sistema generado por el programa.
+int servicio; //Variable global que indica la capacidad máxima de las bandas del sistema generado por el programa.
+//ofstream asignaciones;
 
 
 /**
@@ -184,6 +186,7 @@ void FuncionamientoTerminales(int idTerminal, int nTerminales)
 {
     vector <tuple<double, double>> indicadores; //Rangos para definir a que banda va una persona
     double limiteInferior = 0.f; //Rangos
+    string asign;
     int cont=0;
     double limiteSuperior = 0.f; //Rangos
     for (int index = 0; index < listaTerminales.size()+1; index++) //FOR para deifinición de rangos con base en probabilidad.
@@ -201,11 +204,12 @@ void FuncionamientoTerminales(int idTerminal, int nTerminales)
     }
     while(1)
     {
+        freopen("Asignaciones.txt", "a", stdout);
         if(!listaTerminales[idTerminal].agregaraTerminal.empty()) //Definición de personas que llegan a terminal y esperan banda
         {   
             while(!listaTerminales[idTerminal].agregaraTerminal.empty()) 
             {
-                #pragma omp critical10
+                #pragma omp critical
                 {
                     int mike = 0;
                     int numeroRandom = rand() % 100;
@@ -246,7 +250,7 @@ void FuncionamientoTerminales(int idTerminal, int nTerminales)
             if(int_ms.count() >=2&&!listaTerminales[idTerminal].enTransito.empty()) //Simulaciòn de tiempo de tránsito y salida de persona en banda
             {
                 start=end;
-                #pragma omp critical7
+                #pragma omp critical
                 {
                     listaTerminales[idTerminal].bandas.at(listaTerminales[idTerminal].enTransito.front().banda).capacidad+=1; 
                     listaTerminales[idTerminal].agregaraTerminal.push(listaTerminales[idTerminal].enTransito.front());
@@ -259,15 +263,18 @@ void FuncionamientoTerminales(int idTerminal, int nTerminales)
                 int banderaAsignacion = 1;
                 for(int j = 0; j<(listaTerminales[idTerminal].bandas.size()) && banderaAsignacion==1; j++) //Recorrido de bandas excluyendo las de las Salidas
                 {
-                    #pragma omp critical1 
+                    #pragma omp critical 
                     {
                         if(listaTerminales[idTerminal].bandas.at(j).destino==listaTerminales[idTerminal].personasSalidas.front().terminalDestino && listaTerminales[idTerminal].bandas.at(j).estado==1 && listaTerminales[idTerminal].bandas.at(j).capacidad>0) //Asignación de banda en caso de que esté prendida y con capacidad.
                         {      
                             listaTerminales[idTerminal].bandas.at(j).capacidad -= 1;
                             listaTerminales[idTerminal].personasSalidas.front().banda = j;
+                            asign = "Terminal"+to_string(idTerminal+1)+" -> "+"Terminal"+to_string(listaTerminales[idTerminal].bandas.at(j).destino+1)+"\n";
+                            printf(asign.c_str());
+                            usleep(15);
                             banderaAsignacion = 0;
                             listaTerminales[idTerminal].enTransito.push(listaTerminales[idTerminal].personasSalidas.front());
-                            listaTerminales[idTerminal].personasSalidas.pop_front(); 
+                            listaTerminales[idTerminal].personasSalidas.pop_front();
                         }
                         else if(listaTerminales[idTerminal].bandas.at(j).destino==listaTerminales[idTerminal].personasSalidas.front().terminalDestino && listaTerminales[idTerminal].bandas.at(j).estado==0) //Prende banda que pueda ser utilizada y empieza a ser utilizada.
                         {
@@ -275,11 +282,19 @@ void FuncionamientoTerminales(int idTerminal, int nTerminales)
                             listaTerminales[idTerminal].bandas.at(j).estado = 1;
                             listaTerminales[idTerminal].bandas.at(j).capacidad -= 1;
                             listaTerminales[idTerminal].personasSalidas.front().banda = j;
+                            asign = "Terminal"+to_string(idTerminal+1)+" -> "+"Terminal"+to_string(listaTerminales[idTerminal].bandas.at(j).destino+1)+"\n";
+                            printf(asign.c_str());
+                            usleep(15);
                             banderaAsignacion = 0;
                             listaTerminales[idTerminal].enTransito.push(listaTerminales[idTerminal].personasSalidas.front());
                             listaTerminales[idTerminal].personasSalidas.pop_front();
+                            //asignaciones<<"Terminaljej"<<endl;
+                            //asignaciones.close();
                         }
                     }
+                    //cout<<"Terminal"<<endl;
+                    //asignaciones<<"Terminal"<<endl;
+                    //asignaciones.close(); 
                 }   
                 if(banderaAsignacion==1) //No se encontraron bandas y se busca un cambio de dirección con base en la terminal destino
                 { 
@@ -299,12 +314,13 @@ void FuncionamientoTerminales(int idTerminal, int nTerminales)
                                 banderaAsignacion = 0;
                                 listaTerminales[idTerminal].enTransito.push(listaTerminales[idTerminal].personasSalidas.front());
                                 listaTerminales[idTerminal].personasSalidas.pop_front();
+                                //asignaciones << "Persona sale de la Terminal"<<(idTerminal+1)<<" hacia Terminal"<<(listaTerminales[idTerminal].bandas.at(j).destino+1)<<" en la banda"<<listaTerminales[idTerminal].personasSalidas.front().banda<<".\n";
                             }       
                         }
                     }
                     if(banderaAsignacion==1) //No se encontró ninguna banda y persona es puesta en cola de espera.
                     {
-                        #pragma omp critical3
+                        #pragma omp critical
                         {
                             listaTerminales[idTerminal].agregaraTerminal.push(listaTerminales[idTerminal].enTransito.front());
                             listaTerminales[idTerminal].personasSalidas.pop_front();
@@ -314,21 +330,34 @@ void FuncionamientoTerminales(int idTerminal, int nTerminales)
             }
             else
             {
-                #pragma omp critical4 //Persona se dirige a la salida
+                #pragma omp critical  //Persona se dirige a la salida
                 {
                     listaTerminales[idTerminal].personasSalidas.front().banda = -10;
+                    //freopen("Asignaciones.txt","w",stdout);
+                    //cout<<"Persona sale de Terminal"<<idTerminal<<" a Salida"<<"\n";
+                    asign = "Termimal"+to_string(idTerminal+1)+" -> "+"SALIDA"+"\n";
+                    printf(asign.c_str());
+                    usleep(15);
                     listaTerminales[idTerminal].personasSalidas.pop_front();
                 } 
             }
-            #pragma omp master //Generación de esquema visual en el que se ve actualizando el transporte de personas en bandas del sistema.
-            {
-                RepresentacionVisual(nTerminales);
-                usleep(300000);
-            }
+            
+            //#pragma omp critical
+            //{
+                /*asignaciones.open("Asignaciones.txt");
+                asignaciones << asign;
+                asignaciones.close();
+                usleep(300000);*/
+                #pragma omp master //Generación de esquema visual en el que se ve actualizando el transporte de personas en bandas del sistema.
+                {
+                    RepresentacionVisual(nTerminales);
+                    usleep(300000);
+                }
+            //}
         } 
         while(!listaTerminales[idTerminal].enTransito.empty()) //Ultimas personas que se quedaron en sistema y en tránsito. Son agregadas a queue de Terminal destino.
         {
-            #pragma omp critical9
+            #pragma omp critical 
             {
                 listaTerminales[idTerminal].bandas.at(listaTerminales[idTerminal].enTransito.front().banda).capacidad+=1; 
                 listaTerminales[idTerminal].agregaraTerminal.push(listaTerminales[idTerminal].enTransito.front());
@@ -344,17 +373,43 @@ void FuncionamientoTerminales(int idTerminal, int nTerminales)
                 listaTerminales[idTerminal].bandas.at(z).estado=0;
             }     
         }
+    fclose (stdout);
     }
 }
 
 int main()
 {
+    ifstream variablesUsuario;
+    variablesUsuario.open("Valores.txt");
+    string lineV;
+    int indeexx=0;
+    int numeroTerminales;
+    int numeroMaxBandas;
+    while(getline(variablesUsuario, lineV))
+    {
+        if(indeexx == 0)
+        {
+            numeroTerminales = stoi(lineV);
+            indeexx++;
+        }
+        else if(indeexx == 1)
+        {
+            numeroMaxBandas = stoi(lineV);
+            indeexx++;
+        }
+        else
+        {
+            servicio = stoi(lineV);
+        }  
+    }
+    variablesUsuario.close();
+    freopen("Asignaciones.txt", "w", stdout);
+    fclose (stdout);
     ofstream myfile;
+    variablesUsuario.open("Variables.txt");
     myfile.open("Visualizacion.txt");
     myfile << "digraph G {\n";
     srand(time(NULL));
-    const int numeroTerminales = 5;
-    const int numeroMaxBandas = 3;
     for (int j = 0; j < numeroTerminales + 1; j++)
     {
         alphas.push_back(0); //Reserva de memoria para vector de alphas
@@ -426,5 +481,6 @@ int main()
        int threadId = omp_get_thread_num();
        FuncionamientoTerminales(threadId, numeroTerminales); 
     }
+    //asignaciones.close();
     return 0;
 }
