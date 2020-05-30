@@ -1,14 +1,12 @@
-/* Los tipos de letra no estándar hay que importarlos */
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans+Condensed:wght@200&display=swap');
 body {
     font-family: Open Sans;
     margin: 0px;
 }
 
 h1 {
-    font-family: Montserrat;
+    font-family: 'Fira Sans Condensed', sans-serif;
     font-size: 40px;
     color: #333;
     font-weight: 600;
@@ -17,11 +15,11 @@ h1 {
 }
 
 h2 {
-    font-family: Montserrat;
+    font-family: 'Fira Sans Condensed', sans-serif;
     font-size: 32px;
     color: #444;
     font-weight: 600;
-    letter-spacing: -3px;
+    letter-spacing: -2px;
 }
 
 .cabecera {
@@ -43,53 +41,39 @@ h2 {
 
 .contenido {
     float: left;
+    font-family: 'Fira Sans Condensed', sans-serif;
     width: 65%;
     text-align: justify;
 }
 
-div.contenido img {
+.contenido img {
     width: 100%;
+    text-align: left;
 }
 
-.barra-lateral {
+.izquierda {
+    padding-top: 200px;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 40px;
     padding-top: 200px;
     margin-top: 150px;
     float: right;
-    width: 30%;
+    width: 20%;
 }
 
-.barra-lateral h3 {
+.izquierda h3 {
     color: #444;
-    text-align: center;
-    border-bottom: 1px solid #444;
+    text-align: left;
+    font-family: 'Fira Sans Condensed', sans-serif;
+
 }
 
-.pie {
+.creditos {
     clear: both;
     color: white;
     background-color: rgb(13, 65, 26);
     min-height: 100px;
     padding: 10px;
     text-align: center;
-}
-
-@media (max-width: 640px) {
-    .barra-lateral {
-        display: none;
-    }
-
-    .cuerpo {
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .contenido {
-        float: none;
-        width: 100%;
-    }
-
-    h1, h2, h3 {
-        text-align: center;
-    }
+    font-family: 'Fira Sans Condensed', sans-serif;
 }
