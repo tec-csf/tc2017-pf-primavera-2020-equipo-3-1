@@ -6,8 +6,9 @@ lista = [ ]
 cont=0
 contelem=0
 contex=-1
+lin0 = 1
 for i in lines:
-    if contelem==0 and cont>4:
+    if contelem==0 and cont>lin0:
         contex=contex+1
     if cont==0:
         lin0=float(i)
@@ -58,4 +59,5 @@ for j in X2:
         y=y/2
     x=str(y)
     f.write(x+ '\n')
-f.close()  
+f.close()            
+           
