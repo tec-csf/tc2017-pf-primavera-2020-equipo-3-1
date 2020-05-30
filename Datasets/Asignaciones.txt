@@ -181,4 +181,3 @@ Termimal2 -> SALIDA
 Terminal3 -> Terminal4
 Termimal2 -> SALIDA
 Terminal3 -> Terminal1
-Terminal4 -> 
