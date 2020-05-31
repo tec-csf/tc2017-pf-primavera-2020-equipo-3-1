@@ -56,7 +56,7 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ### 3.1 Arquitectura de la solución
 
-*[Incluya aquí un diagrama donde se aprecie la arquitectura de la solución propuesta, así como la interacción entre los diferentes componentes de la misma.]*
+<img src= "https://github.com/tec-csf/tc2017-pf-primavera-2020-equipo-3-1/blob/master/Datasets/Architectura.png">
 
 *[Incluya una explicación del flujo de la información entre los diferentes componentes.]*
 
