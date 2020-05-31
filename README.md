@@ -72,11 +72,16 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ### 3.3 Frontend
 
-*[Incluya aquí una explicación de la solución utilizada para el frontend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+*El frontend presenta una deescripción del problema a ser abordado por la solución desarrollada en su conjunto; plantea los elementos a ser resueltos por el backend de este proyecto y tamibién sirve como puente entre usuario y el backend. Permite a los usuarios especificar las características del sistema de terminales y bandas. Asimismo, proyecta la simulación y las asignaciones del sistema en forma de un esquema generado por Graphvix y la impresión de un archivo .txt con los movimientos de las personas entre las Terminales y las Salidas del sistema.*
 
 #### 3.3.1 Lenguaje de programación
+*HTML*
+
+*CSS*
 #### 3.3.2 Framework
+*Se contruyó todo el sitio de manera independiente a algùn framework previamente creado por terceros.*
 #### 3.3.3 Librerías de funciones o dependencias
+*No se utilizó ningùn tipo de librerìa de funciones o dependencias para la elaboración del Frontend de este proyecto. Se utilizó una fuente especial descargada de Google Fonts (https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans+Condensed:wght@200&display=swap)*
 
 ### 3.4 Backend
 
