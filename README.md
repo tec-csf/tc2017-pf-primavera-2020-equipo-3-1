@@ -48,7 +48,7 @@ Como parte de la entrega final del proyecto, se debe incluir la siguiente inform
 
 ## 2. Descripción del proyecto
 
-*Se plantea un sistema basado en flujos constantes con base en redes de Jackson y Distribución de Poisson para manejar la asignación de personas dentro de un sistema de aeropuertos a bandas de transporte que les permita moverse entre terminales o salir del sistema cuando lo requieran. El sistema se compone de un número N de terminales, cada una con un número B de bandas, las cuales pueden tener direcciones Tn -> Tm o Tn <- Tm. Estas bandas deben estar apagadas hasta que se les requiera. Deben tener el mayor nivel de concurrencia posible y poder ser volteadas en caso de que el flujo de una terminal lo requiera y siempre y cuando no tenga personas siendo transportadas entre terminales. Se plantea una solución en donde un programa desarrollado en C++ desarrolle todo la creación de terminales, bandas y personas con sus respectivas asignaciones; un archivo auxiliar en Python servirá para desarrollar la parte matemáticas y estadística del programa.*
+*Se plantea un sistema basado en flujos constantes con base en redes de Jackson y Distribución de Poisson para manejar la asignación de personas dentro de un sistema de aeropuertos a bandas de transporte que les permita moverse entre terminales o salir del sistema cuando lo requieran. El sistema se compone de un número N de terminales, cada una con un número B de bandas, las cuales pueden tener direcciones Tn -> Tm o Tn <- Tm. Estas bandas deben estar apagadas hasta que se les requiera. Deben tener el mayor nivel de concurrencia posible y poder ser volteadas en caso de que el flujo de una terminal lo requiera y siempre y cuando no tenga personas siendo transportadas entre terminales. Se plantea una solución en donde un programa desarrollado en C++ desarrolle todo la creación de terminales, bandas y personas con sus respectivas asignaciones; un archivo auxiliar en Python servirá para desarrollar la parte matemáticas y estadística del programa. Lo anterior lo consideramos como un problema NP (es aleatorio el comportamiento del problema), con solución orientada hacia programación dinámica y con complejidad espacial lineal.*
 
 ## 3. Solución
 
@@ -85,11 +85,22 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ### 3.4 Backend
 
-*[Incluya aquí una explicación de la solución utilizada para el backend del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
+*Se decidió realizar úna implementación programda en 2 lenguajes en Backend: C++ y Python. Por un lado, se sabía que el manejo rápido, preciso y accesible de matrices sería importante, por lo que se adoptó implementar la librería numoy para lograr lo anterior. Por otro lado, el funcionamiento de terminales se asemejaba más a un progrma de modelado y funcionamiento de objetos, por lo que se adoptó un lenguaje como C++ que se encargará del manejo de bandas y asignaciones de personas sobre ellas. El uso de liberías como chornos y Graphviz permitió reducir la carga de trabajo en frontend y en el mismo Backend. El uso de archvios para lectura y escritura fue clave para el funcionamiento de esta sección de la arquitectura.*
 
 #### 3.4.1 Lenguaje de programación
+*Python (Parte Matemática)*
+
+*C++ (Funcionamiento de Terminales y asignación de bandas)*
 #### 3.4.2 Framework
+*No se requirió de la implementacón de algún framework para el desarrollo del backend de este proyecto.* 
 #### 3.4.3 Librerías de funciones o dependencias
+*OpenMP -> C++; Utilizada para implementar paralelismo y computo basado en hilos independientes. Uso de omp critical, num_threads y omp master. https://www.openmp.org/wp-content/uploads/cspec20.pdf*
+
+*Numpy -> Python; Utilizada para el manejo de matrices y resolución de sistema de ecuaciones de matriz cuadrada para obtención de capacidades máximas de terminales con base en número de bandas y probabilidades de asignación de personas moviéndose entre las terminales. Uso de numpy.array. https://claudiovz.github.io/scipy-lecture-notes-ES/intro/numpy/array_object.html*
+
+*Graphviz y dot -> Implementado desde C++; Utilizada para la generación de la representación visual del sistema de bandas, terminales y capacidades de las mismas. Uso del comando de sistema "dot -Tps". https://www.graphviz.org/pdf/dotguide.pdf*
+
+*Chrono -> C++; Usada para controlar el flujo de personas, impresiones y asignaciones en el sistema, así como para el manejo, voleto y apagado/prendido de las bandas del sistema de terminales. https://en.cppreference.com/w/cpp/chrono*
 
 ### 3.5 API
 
@@ -117,5 +128,15 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ## 4. Referencias
 
-*[Incluya aquí las referencias a sitios de interés, datasets y cualquier otra información que haya utilizado para realizar el proyecto y que le puedan ser de utilidad a otras personas que quieran usarlo como referencia]*
+*https://www.openmp.org/wp-content/uploads/cspec20.pdf*
+
+*https://www.graphviz.org/pdf/dotguide.pdf*
+
+*http://courses.washington.edu/inde411/QueueingTheoryPart5.pdf*
+
+*http://www.cse.cuhk.edu.hk/~cslui/CSC5420/queueing_network_beamer.pdf*
+
+*https://link.springer.com/chapter/10.1007%2F978-1-4757-5301-1_2*
+
+*https://en.wikipedia.org/wiki/Jackson_network*
 
