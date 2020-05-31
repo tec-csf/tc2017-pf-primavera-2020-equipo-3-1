@@ -62,13 +62,13 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ### 3.2 Descripción de los componentes
 
-*Frontend:*
+*Frontend: Se tiene una interfaz web desarrollada con HTML y CSS en el cual se proyecta los requerimientos del proyecto y sirve como puente para la interacción de los usuarios con los programas que ejecutan y resuelven el sistema para cada caso planteado. En ella, los usuarios pueden personalizar el sistema a ser ejecutado (# de terminales, bandas, capacidad de las mismas), al igual que visualizar los resultados del sistema, en una forma gráfica (imagen del sistema trabajando) y escrita (asignaciones hacia terminales). Es fundamental para que la arquitectura de 3 capas pueda brindar información continua a la parte de backend para una ejecución personlizada por parte del usuario.*
 
-*Backend:*
+*Backend: Se tienen 2 secciones principales del Backend. La primera desarrollada en Python por la facilidad que este lenguaje brinda para cuestiones matemáticas; siendo un proyecto muy orientado al análisis de un sistema de redes (Jackson), se desarrolló que la obtención de valores fundamentales para este sistema de colas fueran obtenidos mediante la ejecución del archivo Lamdas.py. Por otro lado, el funcionamiento de las terminales se planteó en c++, por ser un programa en el que del manejo de estructuras y apuntadores facilita planteamientos que se acercan más al planteamiento de objetos; con este script, se diseñó la manera en que las asignaciones fueran realizadas de la manera más optima pero siempre siguiendo los principios de Redes de Jackson. El backend es la pieda angular del proyecto; fundamental para la aqrquitectura.*
 
-*Datos:*
+*Datos: Diferentes archivos .txt permiten la comunicación entre el Frontend y los diferntes componentes del Backend (entre ellos mismos también). El intercambio de información y datos entre la interfaz web y el programa c++ y a su vez, el cambio y proporcionamiento entre el script de resolución matemática (Python) y el de resolución y visualización del proyecto (c++), son permitidos por esta capa. Sin ella, no se podrían entralazar los primeros 2 componentes mencionados en este apartado. Adicionalmente, el usuario no sería capaz de actualizar el sistema a ser simulado por el proyecto las veces que el/ella quisiera.*
 
-*Hosting:*
+*Hosting: Se contempló como un componente obligatorio del proyecto entregable. Permite el acceso al mismo de manera remota, lo que facilita y abarca el rango de uso y distribución de todo el sistema previamente descrito.*
 
 ### 3.3 Frontend
 
