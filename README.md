@@ -62,7 +62,13 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ### 3.2 Descripción de los componentes
 
-*[Incluya aquí una descripción detallada de cada uno de los componentes de la arquitectura así como una justificación de la selección de cada componente]*
+*Frontend:*
+
+*Backend:*
+
+*Datos:*
+
+*Hosting:*
 
 ### 3.3 Frontend
 
