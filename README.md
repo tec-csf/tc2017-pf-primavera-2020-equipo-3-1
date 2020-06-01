@@ -103,27 +103,7 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 *Chrono -> C++; Usada para controlar el flujo de personas, impresiones y asignaciones en el sistema, así como para el manejo, volteo y apagado/prendido de las bandas del sistema de terminales. https://en.cppreference.com/w/cpp/chrono*
 
-### 3.5 API
-
-*[Incluya aquí una explicación de la solución utilizada para implementar la API del proyecto. No olvide incluir las ligas o referencias donde se puede encontrar información de los lenguajes de programación, frameworks y librerías utilizadas.]*
-
-#### 3.5.1 Lenguaje de programación
-#### 3.5.2 Framework
-#### 3.5.3 Librerías de funciones o dependencias
-
-*[Incluya aquí una explicación de cada uno de los endpoints que forman parte de la API. Cada endpoint debe estar correctamente documentado.]*
-
-*[Por cada endpoint debe incluir lo siguiente:]*
-
-* **Descripción**:
-* **URL**:
-* **Verbos HTTP**:
-* **Headers**:
-* **Formato JSON del cuerpo de la solicitud**: 
-* **Formato JSON de la respuesta**:
-
-
-## 3.6 Pasos a seguir para utilizar el proyecto
+## 3.5 Pasos a seguir para utilizar el proyecto
 
 *[Incluya aquí una guía paso a paso para poder utilizar el proyecto, desde la clonación de este repositorio hasta el despliegue de la solución en una plataforma en la nube.]*
 
