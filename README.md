@@ -1,4 +1,4 @@
-# Proyecto Final: Cintas Transportadoras
+# Proyecto Final: Cintas Transportadoras http://35.237.49.79/
 
 ---
 
@@ -105,8 +105,27 @@ A continuación aparecen descritos los diferentes elementos que forman parte de 
 
 ## 3.5 Pasos a seguir para utilizar el proyecto
 
-*[Incluya aquí una guía paso a paso para poder utilizar el proyecto, desde la clonación de este repositorio hasta el despliegue de la solución en una plataforma en la nube.]*
+*Para el la descarga del código a su computadora, realizar los siguientes pasos:*
+*1. Clonar el repositorio con link https://github.com/tec-csf/tc2017-pf-primavera-2020-equipo-3-1/*
 
+*2. Garantizar que su máquina tenga instalada las librerías de Graphviz (sudo apt-get install graphviz) y numpy (pip install numpy).*
+
+*3. Compilar código "proyecto.cpp" con ayuda de g++.*
+
+*4. Ejecutar código si en su computadora (realmente en ese proyecto no es muy relevante el correrlo de manera local).*
+
+*Para utilizar la solución con interfaz web, realizar los siguientes pasos:*
+*1. Acceder a la siguiente dirección IP: http://35.237.49.79/*
+
+*2. Si desea conocer más acerca del proyecto, dar click en hipervínculo local "Cintas Transportadoras".*
+
+*3. Colocar en los campos Número de Terminales, Número de bandas Máximas y Capacidad de bandas los valores que desee para la simulación a ser ejecutada.*
+
+*4. Dar click en el botón "Ejecutar".*
+
+*5. Visualziar como la solucion va proporcionando las diferentes asignaciones de bandas y los diferentes layouts de terminlaes de bandas del sistema.*
+
+*6.Cuando se decida terminaer la simulación, dar click en botón "Terminar"; lo anterior para que el proceso en la máquina virtual no se quede corriendo indefinidamente.*
 ## 4. Referencias
 
 *https://www.openmp.org/wp-content/uploads/cspec20.pdf*
