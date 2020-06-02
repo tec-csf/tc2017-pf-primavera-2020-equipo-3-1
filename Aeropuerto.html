@@ -55,6 +55,11 @@
                 <br />
                 <button type="submit">Ejecutar</button>
             </form>
+             <br/>
+        <form name="Cancelar" action="aeropuerto.php"  method="get">
+         <input type="hidden" value="2" name="id">
+         <button type="submit">Terminar</button>
+        </form>
             <p> <img id="to_show" src="" width="300px" heigth="300px" alt=""> </p>
 
             
@@ -82,7 +87,7 @@
         document.getElementById("to_show").width = "1100";
         setInterval(()=>{
             img.src = url + "?" + new Date().getTime()
-        },300)
+        },1000)
 
     </script>
     <script>
@@ -92,7 +97,7 @@
         document.getElementById("run").width = "155%";
         setInterval(()=>{
             iframe.src = url2 + "?" + new Date().getTime()
-        },1000)
+        },3000)
     </script>
     
 </body>
