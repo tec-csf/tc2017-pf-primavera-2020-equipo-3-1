@@ -14,7 +14,6 @@
      fwrite($file,"\n");
      fwrite($file,$Capacidad);
      fclose($file);
-     system("g++ proyecto.cpp -o proyecto -fopenmp");
      system("./proyecto");
      header("Location: index.html");
 }
